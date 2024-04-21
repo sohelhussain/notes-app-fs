@@ -11,10 +11,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
+    let filee = [];
     fs.readdir('./files', (err, files) => {
         if (err) throw err;
-        const rmtxt = files.map(file => path.parse(file).name);
-        res.render('index', {files: rmtxt});
+        files.forEach(file => {
+            const rmtxt = path.parse(file).name;
+            const syncFile = fs.readFileSync(`./files/${file}`, 'utf-8')
+            filee.push({files: rmtxt, content: syncFile});
+        } )
+        res.render('index', {filee});
     })
 })
 app.get('/show/:filename', (req, res) => {

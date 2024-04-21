@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link
@@ -21,12 +21,14 @@
             </form>
         </div>
         <div class="tile mt-10 flex justify-start flex-wrap items-center gap-5">
-            <% if(files.length > 0){ %>
-                <% files.forEach(file => { %>
-            <div class="box min-w-96 bg-zinc-500 py-5 px-5 rounded-md relative">
-                <a href="/remove/<%= file %>" class="absolute right-5"><i class="ri-xrp-line text-xl font-bold"></i></a>
-                <h1 class="text-5xl capitalize"><%= file %></h1>
-                <a href="/show/<%= file %>" class="text-sm cursor-pointer text-blue-800 opacity-70 inline-block mt-6">Read more!</a>
+            <% if(filee.length > 0){ %>
+                <% filee.forEach(file => { %>
+            <div class="box max-w-96 min-w-96 bg-zinc-500 py-5 px-5 rounded-md relative">
+                <a href="/remove/<%= file.files %>" class="absolute right-5"><i class="ri-xrp-line text-xl font-bold"></i></a>
+                <h1 class="text-5xl capitalize"><%= file.files %></h1>
+                <p><%= file.content %></p>
+                <a href="/show/<%= file.files %>" class="text-sm cursor-pointer text-blue-800 opacity-70 inline-block mt-6">Read more!</a>
+                <a href="" class="absolute right-5 bottom-5 text-yellow-400">Edit<i class="ri-sketching"></i></a>
             </div>
             <% }) %>
             <%} else{ %>

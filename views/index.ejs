@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="main w-full h-screen bg-zinc-700 p-5">
+        <div class="form">
+            <form action="/create" method="post">
+                <input class="w-full text-white bg-zinc-500 px-4 py-3 mt-2 rounded-md outline-none" placeholder="write title" type="text" name="title" id="">
+                <textarea class="w-full text-white bg-zinc-500 px-4 py-3 mt-2 rounded-md resize-none h-28 outline-none" placeholder="write a description..." name="description" id="" cols="10" rows="10"></textarea>
+                <input class="px-8 py-2 bg-green-300 rounded-md mt-5" type="submit" value="create">
+            </form>
+        </div>
+        <div class="tile mt-10 flex justify-start flex-wrap items-center gap-5">
+            <% if(files.length > 0){ %>
+                <% files.forEach(file => { %>
+            <div class="box min-w-96 bg-zinc-500 py-5 px-5 rounded-md relative">
+                <a href="/remove/<%= file %>" class="absolute right-5"><i class="ri-xrp-line text-xl font-bold"></i></a>
+                <h1 class="text-5xl capitalize"><%= file %></h1>
+                <a href="/show/<%= file %>" class="text-sm cursor-pointer text-blue-800 opacity-70 inline-block mt-6">Read more!</a>
+            </div>
+            <% }) %>
+            <%} else{ %>
+                <h1>not task yet!</h1>
+                <% } %>
+        </div>
+    </div>
+</body>
+</html>

@@ -75,7 +75,7 @@ app.post('/edit', (req, res) => {
     const newtitle = req.body.title + '.txt';
     fs.rename(`./files/${prename}`, `./files/${newtitle}`, err => {
         if (err) throw err;
-        fs.writeFile(`./files/${prename}`, req.body.description, err => {
+        fs.writeFile(`./files/${newtitle}`, req.body.description, err => {
             if (err) throw err;
             res.redirect('/')
         });

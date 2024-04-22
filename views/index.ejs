@@ -26,9 +26,15 @@
             <div class="box max-w-96 min-w-96 bg-zinc-500 py-5 px-5 rounded-md relative">
                 <div class="up-linner flex items-center justify-between">
                     <h1 class="text-5xl capitalize"><%= file.files %></h1>
-                    <a href="/remove/<%= file.files %>" class=""><i class="ri-xrp-line text-xl font-bold"></i></a>
+                    <a href="/remove/<%= file.files %>" class="text-red-700"><i class="ri-xrp-line text-xl font-bold"></i></a>
                 </div>
-                <p class="opacity-40 mt-2 text-black"><%= file.content %></p>
+                <p class="opacity-40 mt-2 text-black">
+                    <% if(file.content.length > 9) { %>
+                        <%= file.content.substring(0, 10)+'....' %> 
+                        <% } else{ %>
+                            <%= file.content %>
+                            <% } %>
+                </p>
                 <div class="linner mt-6 flex items-center justify-between">
                     <a href="/show/<%= file.files %>" class="text-sm cursor-pointer text-blue-800  inline-block">Read more!</a>
                     <a id="edit" href="/edit/<%= file.files %>" class="text-yellow-400">Edit<i class="ri-sketching"></i></a>
